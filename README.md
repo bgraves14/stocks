@@ -13,7 +13,7 @@ BONUS
 -recommended stocks will be shown
 
 TECH
--Angular(single page)
--Jasmine(test)
--Yahoo API
--mongo? maybe?
+M-ongo
+E-xpress
+A-ngular
+N-ode
