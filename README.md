@@ -2,6 +2,7 @@
 
 
 features
+
 -user can create an account
 -user can log in
 -user can can buy/sell stocks(yahoo API)
@@ -9,6 +10,7 @@ features
 -user can see how much $$$ they have made or lost in each owned stock
 
 BONUS
+
 -user will be notified wether its recommended to sell said stock
 -recommended stocks will be shown
 
