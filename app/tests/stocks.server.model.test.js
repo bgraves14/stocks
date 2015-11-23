@@ -72,7 +72,7 @@ describe('Stocks Model', function() {
    });
 
    afterEach(function(done) {
-       // NB this deletes ALL categories (but is run against a test database)
+       // NB this deletes ALL stocks (but is run against a test database)
        Stocks.remove().exec();
        done();
    });

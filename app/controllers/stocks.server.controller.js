@@ -97,7 +97,7 @@
  };
 
  /**
- * Category middleware
+ * Stocks middleware
  */
 exports.stocksByID = function(req, res, next, id) {
 
