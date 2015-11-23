@@ -95,3 +95,26 @@
          }
      });
  };
+
+ /**
+ * Category middleware
+ */
+exports.stocksByID = function(req, res, next, id) {
+
+	if (!mongoose.Types.ObjectId.isValid(id)) {
+		return res.status(400).send({
+			message: 'Stock is invalid'
+		});
+	}
+
+	Stocks.findById(id).exec(function(err, stocks) {
+		if (err) return next(err);
+		if (!stocks) {
+			return res.status(404).send({
+  				message: 'Stock not found'
+  			});
+		}
+		req.stocks = stocks;
+		next();
+	});
+};
