@@ -2,16 +2,17 @@
 
 module.exports = function(app) {
     var stocks = require('../../app/controllers/stocks.server.controller');
+    var users = require('../../app/controllers/users.server.controller');
 
     app.route('/stocks')
-      .get(stocks.list)
+      .get(users.requiresLogin, stocks.list)
       .post(stocks.create);
 
       // the stocksId param is added to the params object for the request
     app.route('/stocks/:stocksId')
-      .get(stocks.read)
-      .put(stocks.update)
-      .delete(stocks.delete);
+      .get(users.requiresLogin, stocks.read)
+      .put(users.requiresLogin, stocks.update)
+      .delete(users.requiresLogin, stocks.delete);
 
 	// Finish by binding the article middleware
 	// What's this? Where the stocksID is present in the URL
