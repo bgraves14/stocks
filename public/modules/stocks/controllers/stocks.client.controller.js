@@ -89,5 +89,9 @@ angular.module('stocks').controller('StocksController', ['$http', '$scope', '$st
    $scope.stocksSearch = function(product) {
     $location.path('stocks/' + product._id);
   };
+
+  $scope.url = function() {
+    $scope.urlText = 'http://finance.yahoo.com/webservice/v1/symbols/' + $scope.symbol + '/quote?format=json&view=detail';
+  };
 }
 ]);
