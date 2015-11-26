@@ -1,17 +1,29 @@
 'use strict';
 
-angular.module('stocks').controller('StocksController', ['$scope', '$stateParams', '$location', 'Authentication', 'Stocks',
-  function($scope, $stateParams, $location, Authentication, Stocks) {
+angular.module('stocks').controller('StocksController', ['$http', '$scope', '$stateParams', '$location', 'Authentication', 'Stocks',
+  function($http, $scope, $stateParams, $location, Authentication, Stocks) {
 
     $scope.authentication = Authentication;
     $scope.currentPage = 1;
     $scope.pageSize = 10;
     $scope.offset = 0;
 
-       // Page changed handler
-     $scope.pageChanged = function() {
-          $scope.offset = ($scope.currentPage - 1) * $scope.pageSize;
-     };
+    $scope.init = function() {
+      $scope.find();
+      $scope.stocksJSON().then(function(result) {
+        $scope.stocksList = result;
+        console.log($scope.stocksList.data[0]);
+      });
+    };
+
+    $scope.stocksJSON = function() {
+      return $http.get('modules/stocks/controllers/stocksList.json');
+    };
+
+     // Page changed handler
+    $scope.pageChanged = function() {
+      $scope.offset = ($scope.currentPage - 1) * $scope.pageSize;
+    };
 
 
     // Create new Stock
@@ -74,8 +86,8 @@ angular.module('stocks').controller('StocksController', ['$scope', '$stateParams
     };
 
    // Search for a stock
-    $scope.stocksSearch = function(product) {
-        $location.path('stocks/' + product._id);
-    };
-  }
+   $scope.stocksSearch = function(product) {
+    $location.path('stocks/' + product._id);
+  };
+}
 ]);
