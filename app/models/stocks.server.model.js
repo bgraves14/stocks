@@ -37,9 +37,9 @@ var StocksSchema = new Schema({
        trim: true,
        unique : true,
        // make this a required field
-       required: 'name cannot be blank',
+       required: 'name cannot be blank'
        // wires in a custom validator function (http://mongoosejs.com/docs/api.html#schematype_SchemaType-validate).
-       validate: [validateLength, 'name must be 15 chars in length or less']
+      //  validate: [validateLength, 'name must be 15 chars in length or less']
    }
 });
 

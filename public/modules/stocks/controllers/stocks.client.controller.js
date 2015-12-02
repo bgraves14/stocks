@@ -11,8 +11,8 @@ angular.module('stocks').controller('StocksController', ['$http', '$scope', '$st
     $scope.init = function() {
       $scope.find();
       $scope.stocksJSON().then(function(result) {
-        $scope.stocksList = result;
-        console.log($scope.stocksList.data[0]);
+        $scope.stocksList = result.data;
+        console.log($scope.stocksList[0]);
       });
     };
 
@@ -47,7 +47,7 @@ angular.module('stocks').controller('StocksController', ['$http', '$scope', '$st
 
     // Remove existing Stock
     $scope.remove = function(stocks) {
-      if ( stocks ) { 
+      if ( stocks ) {
         stocks.$remove();
 
         for (var i in $scope.stocks) {
@@ -80,7 +80,7 @@ angular.module('stocks').controller('StocksController', ['$http', '$scope', '$st
 
     // Find existing Stock
     $scope.findOne = function() {
-      $scope.stocks = Stocks.get({ 
+      $scope.stocks = Stocks.get({
         stocksId: $stateParams.stocksId
       });
     };
